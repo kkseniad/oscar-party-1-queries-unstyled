@@ -5,6 +5,12 @@ class MoviesController < ApplicationController
   end
 
   def show
+    the_id = params.fetch("path_id")
+
+    matching_movie = Movie.where({ :id => the_id})
+
+    @the_movie = matching_movie.at(0)
+
     render({ :template => "movie_templates/show"})
   end
 
