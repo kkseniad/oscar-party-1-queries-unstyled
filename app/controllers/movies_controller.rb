@@ -3,4 +3,9 @@ class MoviesController < ApplicationController
     @list_of_movies = Movie.all.order({ :year => :desc, :title => :asc})
     render({ :template => "movie_templates/index" })
   end
+
+  def show
+    render({ :template => "movie_templates/show"})
+  end
+
 end
