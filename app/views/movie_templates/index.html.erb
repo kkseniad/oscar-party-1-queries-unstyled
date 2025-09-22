@@ -1,3 +1,13 @@
 <h1>Hello World</h1>
 
-<%= Movie.all %>
+<% list_of_movies = Movie.all %>
+
+<ul>
+  <% list_of_movies.each do |a_movie| %>
+    <li>
+      <img src="<%= a_movie.image %>" width = "100">
+
+      <%= a_movie.title %> (<%= a_movie.year %>)
+    </li>
+  <% end %>
+</ul>
