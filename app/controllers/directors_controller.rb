@@ -10,7 +10,15 @@ class DirectorsController < ApplicationController
     matching_director = Director.where({ :id => the_id })
     @the_director = matching_director.at(0)
 
-    render({ :template => "director_templates/show"})
+    render({ :template => "director_templates/show" })
+  end
+
+  def youngest
+    directors_with_dob = Director.where.not({ :dob => nil })
+    sorted_directors = directors_with_dob.order({ :dob => :desc})
+    @the_youngest_director = sorted_directors.at(0)
+
+    render({ :template => "director_templates/youngest" })
   end
 
 end
